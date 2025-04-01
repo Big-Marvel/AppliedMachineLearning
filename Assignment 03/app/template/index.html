@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Spam Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px; /* Fixed size */
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #03dac6;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            outline: none;
+            transition: border-color 0.3s;
+            resize: none; /* Disable resizing */
+        }
+
+        textarea:focus {
+            border-color: #018786;
+        }
+
+        .predict-btn {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #03dac6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .predict-btn:hover {
+            background-color: #018786;
+        }
+
+        .predict-btn:active {
+            transform: scale(0.98);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 5px;
+            border-left: 5px solid #03dac6;
+            text-align: left;
+            width: 100%;
+        }
+
+        .result p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            textarea {
+                font-size: 14px;
+                height: 100px;
+            }
+
+            .predict-btn {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Text Spam Prediction</h1>
+        <form method="POST">
+            <textarea name="text" placeholder="Enter your text here..." required>{{ request.form.get('text', '') }}</textarea>
+            <button type="submit" class="predict-btn">Get Prediction</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <p><strong>Prediction:</strong> {{ result["prediction"] }}</p>
+            <p><strong>Propensity Score:</strong> {{ result["propensity"] }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
