@@ -1,0 +1,8 @@
+Flask
+flask-restful
+nltk
+scikit-learn
+joblib
+pytest
+pytest-cov
+Flask-Cors
