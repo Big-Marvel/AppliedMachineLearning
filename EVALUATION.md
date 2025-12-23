@@ -24,7 +24,7 @@ This repository contains assignments for an Applied Machine Learning course. Bel
   - This makes the code non-portable and will fail on other systems
 - **Duplicate imports** (e.g., `import joblib` appears twice in score.py files)
 - **Duplicate imports** of `from typing import Tuple` in multiple files
-- Missing shebang in bash script (`Assignment 04/hooks/pre-commit` line 1 shows `!/bin/bash` instead of `#!/bin/bash`)
+- Incorrect shebang in bash script (`Assignment 04/hooks/pre-commit` line 1 shows `!/bin/bash` instead of `#!/bin/bash`)
 - Inconsistent naming conventions in some files
 
 **Recommendations:**
@@ -107,14 +107,13 @@ This repository contains assignments for an Applied Machine Learning course. Bel
 - Good separation of concerns (app, resources, src)
 
 **Weaknesses:**
-- Pre-commit hook has syntax error (missing `#` in shebang)
 - No `.dockerignore` file to exclude unnecessary files
 - No docker-compose for easier orchestration
 - Hook only runs on main branch (might miss issues in feature branches)
 - No CI/CD pipeline configuration (GitHub Actions, Jenkins, etc.)
 
 **Recommendations:**
-- Fix pre-commit hook shebang
+- Fix pre-commit hook shebang (add missing `#`)
 - Add `.dockerignore` file
 - Consider adding `docker-compose.yml` for easier management
 - Implement full CI/CD pipeline
@@ -328,5 +327,5 @@ With these improvements, the repository could easily reach 8.5-9/10.
 
 ---
 
-*Evaluation Date: December 23, 2025*
+*Evaluation Date: December 23, 2024*
 *Evaluator: GitHub Copilot Coding Agent*
